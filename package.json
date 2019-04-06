@@ -1,0 +1,17 @@
+{
+  "name": "ethereum-contract-workspace",
+  "version": "0.0.4",
+  "private": true,
+  "scripts": {
+    "test": "nodeunit tests/*;",
+    "start": "./test-network.sh"
+  },
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "ethereum-go-ipc": "git+https://github.com/andrewmikhailov/ethereum-go-ipc.git",
+    "nodeunit": "^0.11.1",
+    "solc": "^0.5.7",
+    "web3": "^1.0.0-beta.52",
+    "web3-utils": "^1.0.0-beta.52"
+  }
+}
