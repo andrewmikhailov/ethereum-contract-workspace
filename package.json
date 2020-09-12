@@ -10,8 +10,8 @@
     "dotenv": "^7.0.0",
     "ethereum-go-ipc": "git+https://github.com/andrewmikhailov/ethereum-go-ipc.git",
     "nodeunit": "^0.11.1",
-    "solc": "^0.5.7",
-    "web3": "^1.0.0-beta.52",
-    "web3-utils": "^1.0.0-beta.52"
+    "solc": "^0.6.0",
+    "web3": "^1.2.11",
+    "web3-utils": "^1.2.11"
   }
 }

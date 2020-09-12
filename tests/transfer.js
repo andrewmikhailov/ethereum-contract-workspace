@@ -13,8 +13,10 @@ baseTest.testTransfer = function (test) {
         from: sender
     };
     connection.eth.estimateGas(transactionRequest, function (error, gasEstimate) {
-        transactionRequest.gas = 10 * gasEstimate;
-        contractInstance.methods.transfer(firstAccount, amount).send(transactionRequest)
+        transactionRequest.gas = 100 * gasEstimate;
+        contractInstance.methods.mint(firstAccount, amount).send(transactionRequest, (error, txHash) => {
+            console.log(error, txHash);
+        })
             .on('confirmation', function (confirmationNumber, receipt) {
                 console.log('Transaction confirmation:', confirmationNumber, receipt);
                 contractInstance.methods.balanceOf(firstAccount).call().then(function (balance) {
@@ -23,4 +25,4 @@ baseTest.testTransfer = function (test) {
                 });
             });
     });
-}
+};

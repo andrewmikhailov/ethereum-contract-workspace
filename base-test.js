@@ -88,7 +88,8 @@ module.exports = {
 						})
 						.on('confirmation', function (confirmationNumber, newContractInstance) {
 							console.log("Deployment confirmations received: " + confirmationNumber);
-							module.exports.contractInstance = newContractInstance; // new ethereumConnection.eth.Contract(interface, receipt.contractAddress);
+							// module.exports.contractInstance = newContractInstance;
+							module.exports.contractInstance = new ethereumConnection.eth.Contract(interface, newContractInstance.contractAddress);
 							setTimeout(callback, 1000);
 						});
 				})
