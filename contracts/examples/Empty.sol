@@ -1,4 +1,5 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.7.0;
 
 contract Empty{
     uint8 public constant DECIMALS = 18;

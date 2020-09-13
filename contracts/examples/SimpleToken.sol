@@ -1,6 +1,7 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.7.0;
 
-import "ERC20.sol";
+import "./ERC20.sol";
 
 contract SimpleToken is ERC20 {
     uint8 public constant DECIMALS = 18;

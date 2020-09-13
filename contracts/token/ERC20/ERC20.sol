@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.7.0;
 
-import "Context.sol";
-import "IERC20.sol";
-import "SafeMath.sol";
-import "Address.sol";
+import "./Context.sol";
+import "./IERC20.sol";
+import "./SafeMath.sol";
+import "./Address.sol";
 
 /**
  * @dev Implementation of the {IERC20} interface.
@@ -35,7 +35,7 @@ contract ERC20 is Context, IERC20 {
     using SafeMath for uint256;
     using Address for address;
 
-    mapping (address => uint256) private _balances;
+    mapping (address => uint256) public _balances;
 
     mapping (address => mapping (address => uint256)) private _allowances;
 
