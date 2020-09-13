@@ -31,3 +31,8 @@ This does the following:
 - starts a local Ethereum node for a test network;
 - enables Web 3 API on this network;
 - starts mining to ensure transactions processing.
+
+## Running tests
+```shell
+npm run test
+```

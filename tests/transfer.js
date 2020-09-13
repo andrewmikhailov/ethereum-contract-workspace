@@ -1,28 +1,26 @@
-var web3 = require('web3');
-var web3Utils = require('web3-utils');
-var baseTest = require('../base-test');
-var compare = require('../compare');
+const web3Utils = require('web3-utils');
+const baseTest = require('../base-test');
 module.exports = baseTest;
-baseTest.testTransfer = function (test) {
-    var connection = baseTest.helpers.getConnection();
-    var contractInstance = baseTest.helpers.getContractInstance();
-    var sender = baseTest.owner;
-    var firstAccount = baseTest.accounts[0].address;
-    var amount = web3Utils.toWei("1", "ether");
-    var transactionRequest = {
+baseTest.testTransfer = async function (test) {
+    test.expect(1);
+    const connection = baseTest.helpers.getConnection();
+    const contractInstance = baseTest.helpers.getContractInstance();
+    const sender = baseTest.owner;
+    const firstAccount = baseTest.accounts[0].address;
+    const amount = web3Utils.toWei("1", "ether");
+    const transactionRequest = {
         from: sender
     };
-    connection.eth.estimateGas(transactionRequest, function (error, gasEstimate) {
-        transactionRequest.gas = 100 * gasEstimate;
-        contractInstance.methods.mint(firstAccount, amount).send(transactionRequest, (error, txHash) => {
-            console.log(error, txHash);
-        })
-            .on('confirmation', function (confirmationNumber, receipt) {
-                console.log('Transaction confirmation:', confirmationNumber, receipt);
-                contractInstance.methods.balanceOf(firstAccount).call().then(function (balance) {
-                    test.ok(amount == parseInt(balance), "The receiver should get the amount transfered");
-                    test.done();
-                });
+    const gasEstimate = await connection.eth.estimateGas(transactionRequest);
+    transactionRequest.gas = 2 * gasEstimate;
+    contractInstance.methods.mint(firstAccount, amount).send(transactionRequest, (error, txHash) => {
+        console.log(error, txHash);
+    })
+        .on('confirmation', function (confirmationNumber, receipt) {
+            console.log('Transaction confirmation:', confirmationNumber, receipt);
+            contractInstance.methods.balanceOf(firstAccount).call().then(function (balance) {
+                test.ok(parseInt(amount) === parseInt(balance), "The receiver should get the amount transfered");
+                test.done();
             });
-    });
+        });
 };
