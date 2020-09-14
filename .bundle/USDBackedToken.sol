@@ -11,7 +11,7 @@ contract USDBackedToken is ERC20 {
     /**
      * The starting Bitcoin to USD exchange rate to perform supply adjustments.
      */
-    uint8 public previousBTCUSDRate = 10000;
+    uint16 public previousBTCUSDRate = 10000;
 
     constructor () public ERC20("SimpleToken", "SIM") {
     }
@@ -20,8 +20,9 @@ contract USDBackedToken is ERC20 {
         _mint(account, amount);
     }
 
-    function adjust(address account, uint8 currentBTCUSDRate) {
-        uint8 percentage = previousBTCUSDRate * 100 / currentBTCUSDRate;
+    function adjust(address account, uint16 currentBTCUSDRate) public {
+        uint16 percentage = previousBTCUSDRate * 100 / currentBTCUSDRate;
         _balances[account] = _balances[account] * percentage / 100;
+        previousBTCUSDRate = currentBTCUSDRate;
     }
 }

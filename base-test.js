@@ -52,10 +52,10 @@ module.exports = {
 				};
 			}
 			contractJSON = JSON.stringify(contractJSON);
-			var compiledContracts = solc.compile(contractJSON);
+			let compiledContracts = solc.compile(contractJSON);
 			compiledContracts = JSON.parse(compiledContracts);
 			compiledContracts = compiledContracts.contracts;
-			for (var contractName in compiledContracts) {
+			for (const contractName in compiledContracts) {
 				if (process.env.CONTRACT != contractName) {
 					continue;
 				}
