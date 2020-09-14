@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "private": true,
   "scripts": {
-    "test": "nodeunit tests/accounts.js; nodeunit tests/transfer.js;",
+    "test": "nodeunit tests/accounts.js; nodeunit tests/mint.js;",
     "start": "./test-network.sh"
   },
   "dependencies": {

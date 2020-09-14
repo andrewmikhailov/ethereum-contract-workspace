@@ -1,7 +1,7 @@
 const web3Utils = require('web3-utils');
 const baseTest = require('../base-test');
 module.exports = baseTest;
-baseTest.testTransfer = async function (test) {
+baseTest.testMint = async function (test) {
     test.expect(1);
     const connection = baseTest.helpers.getConnection();
     const contractInstance = baseTest.helpers.getContractInstance();
