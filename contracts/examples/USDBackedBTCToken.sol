@@ -21,8 +21,8 @@ contract USDBackedBTCToken is ERC20 {
     }
 
     function adjust(address account, uint16 currentBTCUSDRate) public {
-        uint16 percentage = previousBTCUSDRate * 100 / currentBTCUSDRate;
-        _balances[account] = _balances[account] * percentage / 100;
+        uint16 percentage = currentBTCUSDRate / previousBTCUSDRate;
+        _balances[account] = _balances[account] * percentage;
         previousBTCUSDRate = currentBTCUSDRate;
     }
 }
